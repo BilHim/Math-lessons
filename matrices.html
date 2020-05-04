@@ -142,7 +142,7 @@
             1 & \sqrt 2 & -2 \\
             -2 & -1 & 0 \\
             0 & 4 & 15 \\
-            -5 & 0 & 0
+            5 & 0 & 0
           \end{pmatrix}
           \quad
           \begin{matrix}
@@ -163,7 +163,28 @@
           Soient $e=(e_i)_{1\le i\le p}$ et $f=(f_i)_{1\le i\le n}$ des bases de $E$ et $F$ respectivement.
         </p>
         <p>
-          On appelle matrice de $u$ relativement aux deux bases $e$ et $f$ la matrice (de $\mathcal{M}_{n,p}(\K)$) de la famille $\{u(e_1), \dots, u(e_p)\}$ dans la base $f$ et on la note
+          On appelle matrice de $u$ relativement aux deux bases $e$ et $f$ la 
+          matrice (de $\mathcal{M}_{n,p}(\K)$) de la famille 
+          $\{u(e_1), \dots, u(e_p)\}$
+          dans la base $f$ et on la note
+          $\underset{e,f}{Mat}(u)$ ou $Nat(u,e,f)$
+        </p>
+        <p>
+            Si $\forall j \in [\![ 1,p]\!], \enspace u(e_i) = \sum_{i=0}^n \alpha_{ij} f_i$ avec $\alpha_{ij} \in \K$, alors :
+            $$
+            \underset{e,f}{Mat}(u) = 
+            \begin{pmatrix}
+                \alpha_{11} \enspace \alpha_{12} \enspace \dots \enspace \alpha_{1n} \\
+                \alpha_{21} \enspace \alpha_{22} \enspace \dots \enspace \alpha_{2n} \\
+                \vdots \quad \vdots \qquad\qquad \vdots \\
+                \alpha_{p1} \enspace \alpha_{p2} \enspace \dots \enspace \alpha_{pn} \\
+            \end{pmatrix}
+            \begin{pmatrix}
+                
+            \end{pmatrix}$
+            $$
+
+          
         </p>
       </div>
       
