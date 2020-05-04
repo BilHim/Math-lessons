@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.rawgit.com/dreampulse/computer-modern-web-font/master/fonts.css">
+    <link rel="stylesheet" href="style.css">
+    <script>
+        MathJax = {
+          tex: {
+            inlineMath: [['$', '$'], ['\\(', '\\)']],
+            displayMath: [ ['$$','$$'], ["\\[","\\]"] ]
+          }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <title>Matrices</title>
+</head>
+<body>
+    
+    $
+    \newcommand{\N}{\mathbb{N}}
+    \newcommand{\Q}{\mathbb{Q}}
+    \newcommand{\R}{\mathbb{R}}
+    \newcommand{\C}{\mathbb{C}}
+    \newcommand{\K}{\mathbb{K}}
+    $
+    
+    <div class="container">
+      <div class="title">Matrices</div>
+      
+      <p>$\K$ désigne $\R$ ou $\C$ et $m,n,p\in\N^*$.</p>
+      
+      <h1>Les espaces vectoriels $\mathcal{M}_{n,p}(\K)$, $\mathcal{S}_n(\K)$ et $\mathcal{A}_n(\K)$</h1>
+      
+      <div class="proposition">
+        <ol type="i">
+          <li>
+            $\mathcal{M}_{n,p}(\K)$ est un $\K$-e.v. de dimension $np$ dont la famille $(E_{ij})_{\substack{1\leq i \leq n\\1\leq j \leq p}}$ est une base appelée la base canonique de $\mathcal{M}_{n,p}(\K)$.
+          </li>
+          <li>
+            $\mathcal{S}_n(\K)$ et $\mathcal{A}_n(\K)$ sont des s.e.v. supplémentaires dans $\mathcal{M}_n(\K)$.<br>
+            De plus $dim \enspace \mathcal{S}_n(\K) = \frac{n(n+1)}{2}$ et $dim \enspace \mathcal{A}_n(\K) = \frac{n(n-1)}{2}$.
+          </li>
+        </ol>
+      </div>
+      <div class="preuve">
+        <ol type="i">
+          <li>
+            $\mathcal{M}_{n,p}(\K)$ est un $\K$-e.v. <br>
+            <u>
+              Montrons que $(E_{ij})_{\substack{1 \leq i \leq n \\ 1 \leq j \leq p}}$ est une base de $\mathcal{M}_{n,p}(\K)$.
+            </u>
+            <ul>
+              <li>
+                Pour tout $M = (a_{ij})_{\substack{1 \leq i \leq n \\ 1 \leq j \leq p}}$ de $\mathcal{M}_{n,p}(\K)$ : <br>
+                On a $M = \sum_{\substack{1 \leq i \leq n \\ 1 \leq j \leq p}} a_{ij} E_{ij}$, alors $(E_{ij})_{\substack{1 \leq i \leq n \\ 1 \leq j \leq p}}$ est une famille génératrice de $\mathcal{M}_{n,p}(\K)$.
+              </li>
+              <li>
+                Soit $(\alpha_{ij})_{\substack{1 \leq i \leq n \\ 1 \leq j \leq p}} \enspace \in \K^{np}$ tq $\sum_{\substack{1 \leq i \leq n \\ 1 \leq j \leq p}} \alpha_{ij} E_{ij} = 0_{n,p}$
+                alors $(\alpha_{ij})_{\substack{1 \leq i \leq n \\ 1 \leq j \leq p}} \enspace \in \mathcal{O}_{n,p}$<br>
+                donc $\forall (i,j) \in [\![1,n]\!] \times \in [\![1,p]\!], \enspace \alpha_{i,j}=0_{\K}$ 
+                d'où $(E_{ij})_{\substack{1\leq i \leq n \\ 1\leq j \leq p}}$ est libre. <br>
+                Ainsi $(E_{ij})_{\substack{1\leq i \leq n \\ 1\leq j \leq p}}$ est une base de $\mathcal{M}_{n,p}(\K)$
+                donc $dim \enspace \mathcal{N}_{n,p}(\K) = np$
+              </li>
+            </ul>
+          </li>
+          <li>
+            On a déja vu que $\mathcal{S}_n(\K) \oplus \mathcal{A}_n(\K) = \mathcal{M}_n(\K)$ <br>
+            On a $dim \enspace \mathcal{M}_n(\K) = n^2$ donc il suffit de montrer que $dim \enspace \mathcal{S}_n(\K) = \frac{n(n+1)}{2}$<br>
+            <u>Montrons que la famille $B=\{ E_{ij} \big / i\in [\![1,n]\!] \} \cup  \{ E_{ij} + E_{ji} \big/ i \lt j  \}$ est une base de $\mathcal{S}_n(\K)$.</u>
+            <ul>
+              <li>
+                Soit $M=(a_{ij})_{1\le i,j \le n} \enspace \in \mathcal{S}_n(\K)$ alors
+                $$M = \sum_{i=1}^n a_{ij} E_{ij} + \sum_{i\lt j} a_ij(E_{ij} + E_{ji})$$
+                Or $B$ est une famille de vecteurs de $\mathcal{S}_n(\K)$ car $^t E_{ii} = E_{ii}$ et $^t(E_{ij} + E_{ji}) = ^t E_{ij} + ^t E_{ji} = E_{ji} + E_{ij}$<br>
+                D'où $B$ est une famille génératrice de $\mathcal{S}_n(\K)$.
+              </li>
+              <li>
+                $B$ est aussi libre (facile) or $card \enspace B = n+\frac{n(n-1)}{2} = \frac{n(n+1)}{2}$ donc $dim \enspace \mathcal{S}_n(\K) = \frac{n(n+1)}{2}$
+              </li>
+            </ul>
+          </li>
+        </ol>
+      </div>
+      <div class="proposition">
+        <ol type="i">
+          <li>
+            La transposition
+            $\begin{aligned}[t]
+              t \enspace \colon \enspace \mathcal{M}_{n,p}(\K) & \to \mathcal{M}_{p,n}(\K) \\
+            A \enspace & \mapsto \enspace ^tA
+            \end{aligned}$
+            est un isomorphosme d'e.v.
+          </li>
+          <li>
+            La trace
+            $\begin{aligned}[t]
+              Tr \enspace \colon \enspace \mathcal{M}_{n,p}(\K) & \to \K \\
+            A \enspace & \mapsto \enspace Tr(A)
+            \end{aligned}$
+            est une forme linéaire sur $\mathcal{M}_{n,p}(\K)$.
+          </li>
+        </ol>
+      </div>
+    
+      <h1>Matrice d'une application linéaire</h1>
+      
+      <h2>Matrice d'une famille de vecteurs</h2>
+      
+      <div class="definition">
+        <ul>
+          <li>
+            Soient $E$ un $\K$-e.v. de dim. $p$ et $e=\{ e_1, \dots ,e_p \}$ une base de $E$. Soit $x  \in E$ <br>
+        Alors il existe une unique $p$-uplet $(x_1,\dots ,x_p)\in\K^p$ tq $x=\sum_{i=1}^p x_i e_i$   
+          </li>
+          <li>
+            La matrice colonne $\begin{pmatrix} x1 \\ \vdots \\ x_p \end{pmatrix}$ notée $Mat(x, e)$ ou $\underset{e}{Mat} (x)$ est appellée la matrice de $x$ par rapport à $e$.
+          </li>
+          <li>
+            Si $\{ u_1, u_2, \cdots \ u_n \}$ est une famille de vecteurs de $E$ telle que $\forall j \in [\![1,n]\!] \enspace u_j = \sum_{i=1}^p \alpha_{ij} e_i$, alors la matrice $M =  (\alpha_{ij})_{\substack{1 \le i \le p \\ 1\le j \le n}}$ est appelée la matrice de la famille des vecteurs $\{ u_1, \dots , u_n \}$ dans la base $e$ et on note $\underset{e}{Mat} \{ u_1, \dots , u_n \}$ out $Mat(\{ u_1, \dots , u_n \}, e)$ où :
+            $$\underset{e}{Mat} (u_1,\dots, u_n) = 
+            \begin{pmatrix}
+              \alpha_{11} \enspace \alpha_{12} \enspace \dots \enspace \alpha_{1n} \\
+              \alpha_{21} \enspace \alpha_{22} \enspace \dots \enspace \alpha_{2n} \\
+            \vdots \quad \vdots \qquad\qquad \vdots \\
+            \alpha_{p1} \enspace \alpha_{p2} \enspace \dots \enspace \alpha_{pn} \\
+            \end{pmatrix}$$
+          </li>
+        </ul>
+      </div>
+      <div class="exemple">
+        <p>
+          $E = \R_3[X], \enspace P(X)=5X^3-2X+1$ et $Q(X)=4X^2-X+\sqrt 2$
+        </p>
+        <p>
+          Soit $B_c=\{1,X,X^2,X^3\}$ la base canonique de $\R_3[X]$<br>
+          $\implies \underset{B_c}{Mat} (P,Q,P') = 
+          \begin{pmatrix}
+            1 & \sqrt 2 & -2 \\
+            -2 & -1 & 0 \\
+            0 & 4 & 15 \\
+            -5 & 0 & 0
+          \end{pmatrix}
+          \quad
+          \begin{matrix}
+            1 \\
+            X \\
+            X^2 \\
+            X^3
+          \end{matrix}$
+        </p>
+      </div>
+      
+      <h2>Matrice d'une application linéaire</h2>
+      <div class="definition">
+        <p>
+          Soient $E$ et $F$ deux $K$-e.v. de dimensions $p$ et $n$ respectivement et $u\in \mathcal{L} (E,F)$.
+        </p>
+        <p>
+          Soient $e=(e_i)_{1\le i\le p}$ et $f=(f_i)_{1\le i\le n}$ des bases de $E$ et $F$ respectivement.
+        </p>
+        <p>
+          On appelle matrice de $u$ relativement aux deux bases $e$ et $f$ la matrice (de $\mathcal{M}_{n,p}(\K)$) de la famille $\{u(e_1), \dots, u(e_p)\}$ dans la base $f$ et on la note
+        </p>
+      </div>
+      
+      <br><br><br><br><br><br><br>
+    </div>
+    
+</body>
+</html>

@@ -1,0 +1,203 @@
+html {
+    font-size: 16px;
+  }
+  body {
+    font-family: "Computer Modern Serif", serif;
+    letter-spacing: -0.25px;
+    margin: 3rem 0;
+    counter-reset: section definition proposition theoreme;
+  }
+  
+  .container {
+    max-width: 800px;
+  }
+  
+  .title {
+    margin-bottom: 2rem;
+    font-size: 2.5rem;
+    font-weight: bold;
+    line-height: 1;
+    text-align: center;
+  }
+  
+  h1 {
+    counter-reset: subsection;
+    font-size: 2rem;
+    font-weight: bold;
+  }
+  h2 {
+    counter-reset: subsubsection;
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+  
+  h1::before {
+    counter-increment: section;
+    content: counter(section);
+    margin-right: 1rem;
+  }
+  h2::before {
+    counter-increment: subsection;
+    content: counter(section) '.' counter(subsection);
+    margin-right: 1rem;
+  }
+  h3::before {
+    counter-increment: subsubsection;
+    content: counter(section) '.' counter(subsection) '.' counter(subsubsection);
+    margin-right: 1rem;
+  }
+  
+  ol {
+    counter-reset: ol-counter;
+    padding-left: 2rem;
+    list-style: none;
+  }
+  ol > li {
+    counter-increment: ol-counter;
+    position: relative;
+  }
+  ol > li::before {
+    content: counter(ol-counter) '.';
+    position: absolute;
+    transform: translateX(calc(-100% - 0.5rem));
+    top: 0;
+    left: 0;
+  }
+  ol[type="i"] > li::before {
+    content: '(' counter(ol-counter, lower-roman) ')';
+  }
+  ol[type="a"] > li::before {
+    content: '(' counter(ol-counter, lower-latin) ')';
+  }
+  
+  ul {
+    padding-left: 1.5em;
+  }
+  
+  .definition {
+    counter-increment: definition;
+    background-color: #cce5ff;
+    border-color: #b8daff;
+    position: relative;
+    padding: .75rem 1.25rem;
+    padding-bottom: 0.25rem;
+    margin-bottom: 1rem;
+    border: 1px solid transparent;
+    border-radius: .25rem;
+  }
+  .definition::before {
+    content: 'Définition ' counter(definition);
+    display: block;
+    color: #004085;
+    font-weight: bold;
+    font-size: 1.2em;
+  }
+  
+  .proposition {
+    counter-increment: proposition;
+    background-color: #e2e3e5;
+    border-color: #d6d8db;
+    position: relative;
+    padding: .75rem 1.25rem;
+    padding-bottom: 0.25rem;
+    margin-bottom: 1rem;
+    border: 1px solid transparent;
+    border-radius: .25rem;
+  }
+  .proposition::before {
+    content: 'Proposition ' counter(proposition);
+    display: block;
+    color: #383d41;
+    font-weight: bold;
+    font-size: 1.2em;
+  }
+  
+  .proposition.definition {
+    counter-increment: definition proposition;
+  }
+  .proposition.definition::before {
+    content: 'Définition ' counter(definition) ' et Proposition ' counter(proposition);
+  }
+  
+  .preuve::before {
+    content: 'Preuve :';
+    font-size: 1.2em;
+    font-weight: bold;
+    padding: 1.5rem;
+  }
+  
+  .exemple::before {
+    content: 'Exemple :';
+    font-size: 1.2em;
+    font-weight: bold;
+    padding: 1.5rem;
+  }
+  
+  .caracterisation {
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+    position: relative;
+    padding: .75rem 1.25rem;
+    padding-bottom: 0.25rem;
+    margin-bottom: 1rem;
+    border: 1px solid transparent;
+    border-radius: .25rem;
+  }
+  .caracterisation::before {
+    content: 'Caractérisation';
+    display: block;
+    color: #155724;
+    font-weight: bold;
+    font-size: 1.2em;
+  }
+  
+  .proprietes {
+    background-color: #e2e3e5;
+    border-color: #d6d8db;
+    position: relative;
+    padding: .75rem 1.25rem;
+    padding-bottom: 0.25rem;
+    margin-bottom: 1rem;
+    border: 1px solid transparent;
+    border-radius: .25rem;
+  }
+  .proprietes::before {
+    content: 'Propriétés ';
+    display: block;
+    color: #383d41;
+    font-weight: bold;
+    font-size: 1.2em;
+  }
+  
+  .add-title::before {
+    display: inline;
+  }
+  
+  li.center {
+    text-align: center;
+  }
+  
+  .center-s-b {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+  }
+  .center-s-b::after {
+    content: '';
+    display: block;
+    width: 20%;
+  }
+  .center-s-b mjx-container {
+      display: inline-block;
+      margin-top: 0.25em;
+  }
+  
+  .center-s {
+    display: flex;
+    align-items: flex-start;
+  }
+  .center-s mjx-container {
+      display: inline-block;
+      margin-top: 0.25em;
+  }
+  
