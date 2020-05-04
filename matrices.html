@@ -179,15 +179,53 @@
                 \vdots \quad \vdots \qquad\qquad \vdots \\
                 \alpha_{p1} \enspace \alpha_{p2} \enspace \dots \enspace \alpha_{pn} \\
             \end{pmatrix}
-            \begin{pmatrix}
-                
-            \end{pmatrix}$
+            \begin{matrix}
+                f_1 \\ f_2 \\ \vdots \\ f_n
+            \end{matrix}
             $$
-
-          
+        </p>
+        <p>
+            Si $E=F$ donc on écrit $\underset{e}{Mat}(u)$ au lieu de $\underset{e,e}{Mat}(u)$.
         </p>
       </div>
-      
+      <div class="exemple">
+        <ol>
+            <li>
+                <p>
+                    Soient $e=\{e_1, e_2\}$ labase canonique de $\R^2$ et $f=\{ f_1 = e_1-e_2, f_2=e_1+e_2 \}$ une autre base de $\R^2$.<br>
+                    Trouvons $\underset{e}{Mat}(Id_{\Q^2})$ et $\underset{e, f}{Mat}(Id_{\Q^2})$        
+                </p>
+                <ul>
+                    <li>
+                        $\underset{e}{Mat}(Id_{\Q^2}) = 
+                        \begin{pmatrix}
+                            1 & 0 \\
+                            0 & 1 
+                        \end{pmatrix}
+                        \quad
+                        \begin{matrix}
+                            e_1\\
+                            e_2 
+                        \end{matrix}$
+                    </li>
+                    <li>$\underset{e,f}{Mat}(Id_{\Q^2}) = 
+                        \begin{pmatrix}
+                            \frac 1 2 & -\frac 1 2 \\
+                            \frac 1 2 & \frac 1 2 
+                        \end{pmatrix}
+                        \quad
+                        \begin{matrix}
+                            f_1\\
+                            f_2 
+                        \end{matrix}$
+                    </li>
+                </ul>
+            </li>
+            <li>
+                
+            </li>
+        </ol>
+      </div>
       <br><br><br><br><br><br><br>
     </div>
     
