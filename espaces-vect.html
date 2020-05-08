@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.rawgit.com/dreampulse/computer-modern-web-font/master/fonts.css">
+    <link rel="stylesheet" href="style.css">
+    <script>
+        MathJax = {
+          tex: {
+            inlineMath: [['$', '$'], ['\\(', '\\)']],
+            displayMath: [ ['$$','$$'], ["\\[","\\]"] ]
+          }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <title>Matrices</title>
+</head>
+<body>
+    
+    $
+    \newcommand{\N}{\mathbb{N}}
+    \newcommand{\Q}{\mathbb{Q}}
+    \newcommand{\R}{\mathbb{R}}
+    \newcommand{\C}{\mathbb{C}}
+    \newcommand{\K}{\mathbb{K}}
+    $
+
+    <div class="container">
+    <div class="title">Espaces Vectoriels réels et complexes</div>
+    
+    <h1>Structure d’un espace vectoriel</h1>
+    
+    <h2>Définition d’un espace vectoriel</h2>
+    <div class="definition">
+        <p>
+        Un espace vectoriel sur $\K$ (ou un $\K$-espace vectoriel) est un triplet $(E, +, \cdot)$ formé d'un ensemble $E$ non vide, d'une loi de composition interne "$+$" et d'une loi de composition externe "$\cdot$" sur $E$ à opérateurs dans $\K$ vérifiant les propriétés suivantes:
+        </p>
+        <p>
+        $EV_1:$ $(E,+)$ est un group commutatif <br>
+        $EV_2:$ $\forall \alpha \in \K, \forall (x,y) \in E^2, \alpha\cdot(x+y) = \alpha\cdot x + \alpha\cdot y$ <br>
+        $EV_3:$ $\forall (\alpha, \beta)\in\K^2,\forall x\in E,(\alpha+\beta)\cdot x= \alpha \cdot x + \beta \cdot x$ <br>
+        $EV_4:$ $\forall (\alpha, \beta)\in\K^2,\forall x\in E,\alpha\cdot(\beta\cdot x) =(\alpha\beta)\cdot x$ <br>
+        $EV_5:$ $\forall x \in E , 1 \cdot x = x$
+        </p>
+        <p>
+        Si $(E,+,\cdot)$ est $\K$-e.v., les éléments de $E$ s'appellent les vecteur et ceux de $\K$ les scalaires.
+        </p>
+    </div>
+    <div class="proposition">
+        Soient $(E,+,\cdot)$ est $K$-e.v, $\alpha, \beta \in \K$ et $x, y \in E$. Alors :
+        <ol type="i">
+        <li>$\alpha \cdot (x-y) = \alpha \cdot x - \alpha \cdot y$</li>
+        <li>$(\alpha-\beta)\cdot x = \alpha \cdot x - \beta \cdot x$</li>
+        <li>$(-1)\cdot x = -x$</li>
+        <li>$(-\alpha x) = \alpha\cdot (-x) = -(\alpha\cdot x)$</li>
+        <li>$\alpha\cdot x = 0 \iff \alpha = 0_\K \text{ ou } x = 0_E$</li>
+        </ol>
+        
+    </div>
+    <div class="preuve">
+        <ol type="i">
+        <li class="center">
+            $\alpha\cdot x = \alpha \cdot(x-y+y) \stackrel{\smash{EV_2}}{=} \alpha(x-y) + \alpha y$ <br>
+            $\implies \alpha\cdot (x-y)=\alpha\cdot x - \alpha\cdot y$ <br><br>
+        </li> 
+        <li class="center">
+            $\alpha \cdot x = (\alpha-\beta+\beta)\cdot x \stackrel{\smash{EV_3}}{=} (\alpha-\beta)\cdot x + \beta \cdot x $ <br>
+            $\implies (\alpha-\beta)\cdot x=\alpha\cdot x - \beta\cdot x$ <br><br>
+        </li>
+        <li>
+            <div class="center-s-b">
+            <span class="mr-4">On a</span>
+            $\begin{align}
+                (1-1)\cdot x &= 1 \cdot x - 1 \cdot x   \\
+                            &= x - x           \\
+                            &= x+(-x)          \\
+                            &= 0_E             
+            \end{align}$
+            </div>
+            <div class="center-s-b">
+            <span class="mr-4">Or</span>
+            $\begin{align}
+                (1-1)\cdot x &= (1+(-1))\cdot x \\
+                            &= 1\cdot x + (-1) \cdot x        
+            \end{align}$
+            </div>
+            <div class="center-s-b">
+            <span class="mr-4">Donc</span>
+            $1\cdot x + (-1)\cdot x = 0_E$
+            </div>
+            <div class="text-center">$\implies (-1)\cdot x = -x$ </div>
+            <br>
+        </li>
+        <li>
+            <div class="center-s-b">
+            <span class="mr-4">On a</span>
+            $\begin{align}
+            (-\alpha)\cdot x &= ((-1)\cdot \alpha) \cdot x \\
+                                &= (-1) \cdot (\alpha\cdot x) \\
+                                &= -(\alpha\cdot x)
+            \end{align}$
+            </div>
+            <div class="center-s-b">
+            <span class="mr-4">et</span>
+            $\begin{align}
+                (-\alpha)\cdot x &= (\alpha(-1))\cdot x \\
+                                &= \alpha\cdot((-1)\cdot x) \\
+                                &= \alpha \cdot (-x)
+            \end{align}$
+            </div>
+            <div class="text-center">$\implies (-1)\cdot x = -x$</div>
+        </li>
+        <li>
+            $\impliedby$)
+            <ul>
+            <li>
+                Si $\alpha=0_\K$ :
+                \begin{align}
+                    && (0_\K+0_\K)\cdot x &=  0_\K\cdot x &\qquad\qquad \\
+                    &\implies & 0_\K \cdot x + 0_\K \cdot x &= 0_\K \cdot x &\\
+                    &\implies & 0_\K \cdot x &= 0_E &
+                \end{align}
+            </li>
+            <li>
+                Si $x=0_E$ :
+                \begin{aligned}
+                    && \alpha\cdot(0_E+0_E) &=  \alpha\cdot 0_E &\qquad\qquad \\
+                    &\implies & \alpha\cdot 0_E + \alpha\cdot 0_E &= \alpha\cdot 0_E &\\
+                    &\implies & \alpha\cdot 0_E &= 0_E &
+                \end{aligned}
+                Donc si $\alpha=0_\K$ ou $x=0_E$ alors $\alpha\cdot x = 0_E$ <br>
+            </li>
+            </ul>
+    
+            $\implies$) Supposons que $\alpha \cdot x = 0_E$
+            <ul>
+            <li>
+                Si $\alpha=0_\K$ : c'est bien.
+            </li>
+            <li>
+                <div class="center-s-b">
+                <span class="mr-4">Sinon</span>
+                $\begin{align}
+                    \alpha\cdot x = 0_E &\implies \alpha^{-1}\cdot(\alpha\cdot x) = \alpha^{-1}\cdot 0_E&\qquad\qquad\\
+                                        &\implies (\alpha^{-1}\alpha)\cdot x = 0_E&\\
+                                        &\implies 1\cdot x = 0_E&\\
+                                        &\implies x = 0_E &
+                \end{align}$
+                </div>
+            </li>
+            </ul>
+        </li>
+        </ol>
+    </div>
+    
+    <h2>Espaces vectoriels de référence</h2>
+    <ol>
+        <li>$\mathbb{R}$ muni de deux lois  usuelles $+$ et $\cdot$ est $\mathbb{R}$-e.v.</li>
+        <li>$(\mathbb{C},+,\cdot)$ (muni des lois usuelles) est un $\mathbb{C}$-e.v. C'est aussi un $\mathbb{R}$-e.v.</li>
+        <li>
+        <ul>
+            <li>
+            Soient $(E_1,+,\cdot)$ et $(E_2,+,\cdot)$ deux  $\K$-e.v.<br>
+            On définit sur $E_1\times E_2$ deux lois "$\stackrel{\smash{\sim}}{+}$" et "$\stackrel{\smash{\sim}}{\cdot}$".<br>
+            Si $(x,y),(x',y')\in E_1\times E_2$ : $(x,y) \stackrel{\smash{\sim}}{+} (x',y') = (x+x',y+y')$ et $\alpha \stackrel{\smash{\sim}}{\cdot} (x,y) = (\alpha\cdot x, \alpha \cdot y)$<br>
+            Alors $(E_1\times E_2,\stackrel{\smash{\sim}}{+}, \stackrel{\smash{\sim}}{\cdot})$ est un $K$-e.v appelé l'e.v. produit de $E_1$ et $E_2$.
+            </li>
+            <li>
+            Si $(E_1,+,\cdot),\dots,(E_2,+,\cdot)$ sont des $\K$ e.v. <br>
+            Alors $E_1 \times E_2 \times \dots \times E_n = \prod_{i=0}^{n}E_i$ muni des lois usuelles $+$ et $\cdot$ est un $\K$-e.v appelé l'espace vectoriel produit des $E_i$.<br>
+            En particulier $(\mathbb{R}^n,+,\cdot)$ (muni des lois usuelles) est un $\mathbb{R}$-e.v. et $(\mathbb{C}^n,+,\cdot)$ est un $\mathbb{C}-e.v.$
+            </li>
+        </ul>
+        </li>
+        <li>
+        Soient $X$ un ensemble quelconque non vide et $(E,+,\cdot)$ un $K$-e.v. <br>
+        Alors $(\mathcal{A}(X,E),+,\cdot)$ est un $\K$-e.v.<br>
+        avec : si $f,g\in\mathcal{A}(X,E)$, $\alpha\in\K$, $f+g$ et $\alpha f$ sont définies par :<br>
+        \begin{align}
+            \forall x \in X,\hspace{8pt} &(f+g)(x)=f(x)+g(g)\\
+            & (\alpha f)(x)=\alpha f(x)
+        \end{align}
+        En particulier $(\mathcal{A}([a,b],\mathbb{R}),+,\cdot)$ est un $\mathbb{R}$-e.v. et $(\mathcal{A}([a,b],\mathbb{C}),+,\cdot)$ est un $\mathbb{C}$-e.v.<br>
+        <ul>
+            <li>$\mathbb{R}^\mathbb{N}$ est un $\mathbb{R}$-e.v. $(X=\mathbb{N},E=\mathbb{R})$</li>
+            <li>$\mathbb{C}^\mathbb{N}$ est un $\mathbb{C}$-e.v. $(X=\mathbb{N},E=\mathbb{C})$</li>
+        </ul>
+        </li>
+        <li>
+        L'ensemble des matrices $\mathcal{M}_{n,p}(\K)$ muni des lois usuelles $+$ et $\cdot$ est un $\K$-e.v., avec :
+        \begin{align}
+            (a_{ij}) + (b_{ij}) &= (a_{ij}+b_{ij}) \\
+            \alpha \cdot (a_{ij}) &= (\alpha a_{ij})
+        \end{align}
+        </li>
+        <li>
+        $(\K[X],+,\cdot)$ muni des lois usuelles est un $\K$-e.v.
+        </li>
+    </ol>
+    
+    <h2>Sous-espaces vectoriels</h2>
+    <div class="definition">
+        <p>
+        Soit $E$ un $\K$-e.v.<br>
+        Un sous-ensemble non vide $F$ de  $E$ est dit un sous espace vectoriel de  $E$ si $F$ est lui même est un $\K$-e.v. muni des lois induites par celles de $E$.
+        </p>
+    </div>
+    <div class="caracterisation">
+        $$
+        F \text{ est un } \K\text{-e.v. de } E 
+        \iff 
+        \begin{cases}
+            \text{(i) } F \neq \emptyset \text{ et } F \subseteq E \\
+            \text{(ii) } \forall \alpha, \beta \in \K, \forall x,y \in F, \alpha x+\beta y \in F
+        \end{cases}
+        $$
+    </div>
+    <div class="preuve">
+        <div class="center-s">
+        $\implies)$
+        <ul>
+            <li>$F \neq \emptyset$ et $F \subseteq E$ selon la définition.</li>
+            <li>$\forall \alpha, \beta \in \K, \forall x,y \in F, \alpha x+\beta y \in F$ selon la stabilité de $F$ par "$+$" et "$\cdot$".</li>
+        </ul>
+        </div>
+        <div class="center-s">
+        $\impliedby)$
+        <ul>
+            <li>On a $F \neq \emptyset$ et $F \subseteq E$</li>
+            <li>Pour $\alpha=1$, $\beta=1$ : $F$ est stable par "$+$".</li>
+            <li>Pour $\alpha\in\K$, $\beta=0$ : $F$ est stable par "$\cdot$".</li>
+            <li>
+            Soit $x,y\in F$<br>
+            Alors $x-y=1\cdot x + (-1)\cdot y \in F$<br>
+            Donc $(F,+)$ est un s.g. de $(E,+)$.
+            </li>
+            <li>$(F,+)$ est commutatif par hérédité.</li>
+            <li>
+            $EV_2, EV_3, EV_4$ et $EV_5$ restent vraies par hérédité.<br>
+            D'où $F$ est un s.e.v de $E$
+            </li>
+        </ul>
+        </div>
+    </div>
+    <div class="exemple">
+        <ol type="i">
+        <li>${0_E}$ est un s.e.v de $E$.</li>
+        <li>
+            Soit $(a,b)\in\R^2 \setminus {(0,0)}$ <br>
+            $F=\{(x,y)\in\R^2 / ax+by=0\}$ est un s.e.v. de $\R^2$
+        </li>
+        <li>$\K_n[X]$ est un s.e.v. de $\K[X]$.</li>
+        <li>L'ensemble des suites convergentes de $\R^{\N}$ (resp. de $\C^{\N}$) est un s.e.v. de $\R^{\N}$ (rest. de $\C^{\N}$).</li>
+        <li>
+            L'ensemble des solutions d'un système linéaire homogène à $n$ équations et $m$ inconnues dans $\R$ est un s.e.v. de $\R^n$<br>
+            En effet, soit :
+            $$
+            (S)
+            \iff
+            \begin{cases}
+            a_{11}x_1+\dots+a_{1m}x_m=0 \\
+            \quad \vdots \qquad\qquad\qquad\qquad \vdots\\
+            a_{n1}x_1+\dots+a_{nm}x_m=0
+            \end{cases}
+            $$
+            Notons $S_H$ l'ens. des  solutions de $(S)$<br>
+            $S_H\subseteq\R^n$ et $S_H\neq\varnothing$ car $0_{R^n}\in\S_H$<br>
+            Soient $s=(s_1,s_2,\dots,s_m)$ et $s'=(s'_1,s'_2,\dots,s'_m)\in S_H$ et $\alpha,\beta\in\R$<br>
+            Montrons que $\alpha s+\beta s' \in S_H$<br>
+            Soit $i\in [\![1,n]\!]$<br>
+            $$\begin{align}
+            & \alpha_{i1}(\alpha s_1+\beta s'_1) + \alpha_{i2}(\alpha s_2+\beta s'_2) + \dots + \alpha_{im}(\alpha s_m+\beta s'_m) \\
+            = \enspace & \alpha (\alpha_{i1}s_1+\alpha_{i2}s_2+ \dots + \alpha_{im}s_m) + \beta (\alpha_{i1}s'_1+\alpha_{i2}s'_2+ \dots + \alpha_{im}s'_m) \\
+            = \enspace & \alpha \cdot 0 + \beta \cdot 0 \\
+            = \enspace & 0
+            \end{align}$$
+            Donc $\alpha s+\beta s'$ est une solution de toutes les équations de $(S)$<br>
+            Alors $\alpha s+\beta s' \in S_H$ <br>
+            D'où $S_H$ est un s.e.v. de $\R^n$
+        </li>
+        </ol>
+    </div>
+    
+    <h2>Sous-espaces engendrés</h2>
+    <div class="definition">
+        <p>
+        Soient $I$ un ensemble non vide et $\alpha=(\alpha_i)_{i\in I}$ une famille d'éléments de $\K$.
+        </p>
+        <p>
+        On appele support de $\alpha$ le sous-ensemble de  $I$ noté $supp(\alpha)$ défini par $supp(\alpha)=\{ i\in I / \alpha_i \neq 0_{\K} \}$
+        </p>
+        <p>
+        Si $supp(\alpha)$ est une partie finie de $I$, on dit que 
+    $\alpha$ est à suppport fini.
+        </p>
+    </div>
+    <div class="exemple">
+        <p>
+        Les éléments de  $\K[X]$ sont les familles de scalaires indexés par $\N$ et de support fini.
+        </p>
+    </div>
+    <div class="definition">
+        <p>
+        Soient $(E,+,\cdot)$ un $\K$-e.v. et $X$une partie non vide de $E$.
+        </p>
+        <p>
+        La famille $(x)_{x\in X}$ s'appelle la famille canoniquement associée à $X$.
+        </p>
+    </div>
+    <div class="definition">
+        <p>
+        Soient $(E,+,\cdot)$ un $\K$-e.v. et $I$ un ensemble none vide et $(x_i)_{i\in I}$ une famille de vecteurs de $E$ et $X$ une partie non vide de $E$.
+        </p>
+        <ol type="i">
+        <li>
+            On appelle combinaison linéaire de $(x_i)_{i\in I}$, tout vecteur $x$ de $E$ tq $\exists\alpha = (\alpha_i)_{i\in I}\in\K^{I}$ à support fini et $x=\sum_{i\in I} \alpha_i x_i$<br>
+            Si $f=supp(x)$ alors $x=\sum_{i\in f} \alpha_i x_i$
+        </li>
+        <li>
+            On appelle combinaison linéaire de $X$ toute combinaison linéaire de $(x)_{x\in X}$
+        </li>
+        </ol>
+    </div>
+    <div class="exemple">
+        <p>
+        Tout polynôme de $\K[X]$ est une combinaison linéaire de la famille $(X^k)_{k\in\N}$.
+        </p>
+    </div>
+    <div class="proposition definition">
+        <p>
+        Soient $E$ un $\K$-e.v. et $(x_i)_{i\in I}$ une famille de vecteurs de $E$ et $X$ ue partie de $E$. Alors :
+        <ol type="i">
+            <li>L'ensemble des combinaisons linéaire de $(x_i)_{i\in I}$ est un sous espace vectoriel de $E$ appelé le sous-espace engendré par $(x_i)_{i\in I}$ et on note $vect((x_i)_i\in I)$</li>
+            <li>
+            L'ensemble des combinaisons linéaires de $X$ est un s.e.v. de $E$ noté $vect(X)$ ou $\K X$
+            </li>
+        </ol>
+        </p>
+    </div>
+    <div class="preuve">
+        <ol type="i">
+        <li>
+            <ul>
+            <li>
+                Si $I\neq\varnothing$ <br>
+                Soit $i_0\in I$
+                $$x_{i_0}=1\cdot x_{i_0} + \sum_{\stackrel{i\in I}{i\neq i_0}}0_{\K}\cdot x_i \in vect((x_i)_{i\in I})$$
+                Alors $vect((x_i)_{i\in I}) \neq \varnothing$ <br>
+                Soient $x=\sum_{i\in I} \alpha_i x_i$ et $y=\sum_{i\in I} \beta_i x_i\enspace\in vect((x_i)_{i\in I})$ et $a,b\in\K$ avec $\alpha=(\alpha_i)_{i\in I}$ et $\beta=(\beta_i)_{i\in I} \enspace \in \K^I$ à supports finis. <br>
+                $$\exists J \text{ fini de } I \text{ tq } supp(\alpha)\cup supp(\beta)\subseteq J$$
+                <div class="center-s-b">
+                <span>On a</span>
+                $\begin{align}
+                    ax + by &= \sum_{i\in J} a \alpha_i x_i + \sum_{i\in J} b \beta_i x_i \\
+                    &= \sum_{i\in J} (a\alpha_i + b\beta_i) x_i \quad \in vect((x_i)_{i\in I}) 
+                \end{align}$
+                </div>
+                Donc $vect((x_i)_{i\in I})$ est un s.e.v. de $E$.
+            </li>
+            <li>
+                Si $I=\varnothing$, par convention $vect(\varnothing)=\{0_E\}$ est un s.e.v. de $E$.
+            </li>
+            </ul>
+        </li>
+        <li>
+            L'ensemble des combinaisons linéaires de $X$ est l'ensemble des combinasons linéaires de $(x)_{x\in X}$. <br>
+            Donc $vect(X)=vect((x)_{x\in X})$ est un s.e.v. de $E$ d'après $(i)$.
+        </li>
+        </ol>
+    </div>
+    <div class="proprietes">
+        <p>
+        Soient $E$ un $\K$-e.v. $A$, $B$ et $X$ des parties non vides de $E$. Alors:
+        </p>
+        <ol type="i">
+        <li>
+            $vect(A)\subseteq vect(B) \iff A \subseteq vect(B)$
+        </li>
+        <li id="fix-52935">
+            <style>#fix-52935 {margin-top:1.5rem}#fix-52935>mjx-container {margin-top:-5rem;display:inline-block}</style>
+            $vect(A)=vect(B) \iff
+            \begin{cases}
+            A \subseteq vect(B) \\
+            \text{ et } \\
+            B \subseteq vect(A)
+            \end{cases}
+            $
+        </li>
+        <li>
+            Si $F$ est un s.e.v. de $E$ alors :
+            <ol type="a">
+            <li>$Vect(F)=F$</li>
+            <li>$X\subseteq F \iff vect(X) \subseteq F$</li>
+            </ol>
+        </li>
+        </ol>
+    </div>
+    <div class="preuve">
+        <ol type="i">
+        <li>
+            $\implies /$ évident car $A\subseteq vect(A)$<br>
+            $\impliedby /$ Soit $x=\sum_1^n \alpha_ix_i \enspace \in vect(A)$ avec $\alpha_i \in \K$ et $x_i \in A$ <br>
+            $vect(B)$ est un s.e.v. de $E$.<br>
+            $\implies \forall i \in [\![1,n]\!] \enspace \alpha_i x_i \in vect(B)$ <br>
+            Alors par réccurence, $\sum \alpha_i x_i \enspace \in vect(B)$ d'o
+        </li>
+        </ol>
+    </div>
+    
+    <h1>Somme directe et sous-espace supplémentaire</h1>
+    <h1>Engendrement et dépendance linéaire</h1>
+    <h2>Familles et parties génératrices</h2>
+    <h2>Famille libre - Famille liée - Base</h2>
+    
+    <h1>Les applications linéaires</h1>
+    <h2>Définition et premiers exemples</h2>
+    <h2>Noyeau et image d'une application linéaire</h2>
+    
+
+    
+    </div>
+
+
+    <script>
+    MathJax = {
+    tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [ ['$$','$$'], ["\\[","\\]"] ]
+    }
+    };
+    </script>
+
+      <br><br><br><br><br><br><br>
+    </div>
+    
+</body>
+</html>

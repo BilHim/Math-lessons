@@ -5,7 +5,7 @@ html {
     font-family: "Computer Modern Serif", serif;
     letter-spacing: -0.25px;
     margin: 3rem 0;
-    counter-reset: section definition proposition theoreme;
+    counter-reset: section definition proposition theoreme corollaire;
   }
   
   .container {
@@ -111,12 +111,56 @@ html {
     font-weight: bold;
     font-size: 1.2em;
   }
+
+  .remarque {
+    background-color: #fff3cd;
+    border-color: #ffeeba;
+    position: relative;
+    padding: .75rem 1.25rem;
+    padding-bottom: 0.25rem;
+    margin-bottom: 1rem;
+    border: 1px solid transparent;
+    border-radius: .25rem;
+  }
+  .remarque::before {
+    content: 'Remarque';
+    display: block;
+    color: #856404;
+    font-weight: bold;
+    font-size: 1.2em;
+  }
+
+  .corollaire {
+    counter-increment: corollaire;
+    background-color: #d1ecf1;
+    border-color: #bee5eb;
+    position: relative;
+    padding: .75rem 1.25rem;
+    padding-bottom: 0.25rem;
+    margin-bottom: 1rem;
+    border: 1px solid transparent;
+    border-radius: .25rem;
+  }
+  .corollaire::before {
+    content: 'Corollaire ' counter(corollaire);
+    display: block;
+    color: #0c5460;
+    font-weight: bold;
+    font-size: 1.2em;
+  }
   
   .proposition.definition {
     counter-increment: definition proposition;
   }
   .proposition.definition::before {
     content: 'Définition ' counter(definition) ' et Proposition ' counter(proposition);
+  }
+
+  .corollaire.definition {
+    counter-increment: definition corollaire;
+  }
+  .corollaire.definition::before {
+    content: 'Définition ' counter(definition) ' et Corollaire ' counter(proposition);
   }
   
   .preuve::before {
