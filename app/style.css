@@ -106,7 +106,7 @@ html {
   }
   .proposition::before {
     content: 'Proposition ' counter(proposition);
-    display: block;
+    +display: block;
     color: #383d41;
     font-weight: bold;
     font-size: 1.2em;
@@ -124,7 +124,7 @@ html {
   }
   .remarque::before {
     content: 'Remarque';
-    display: block;
+    /* display: block; */
     color: #856404;
     font-weight: bold;
     font-size: 1.2em;
@@ -143,7 +143,7 @@ html {
   }
   .corollaire::before {
     content: 'Corollaire ' counter(corollaire);
-    display: block;
+    /* display: block; */
     color: #0c5460;
     font-weight: bold;
     font-size: 1.2em;
@@ -189,7 +189,7 @@ html {
   }
   .caracterisation::before {
     content: 'Caractérisation';
-    display: block;
+    /* display: block; */
     color: #155724;
     font-weight: bold;
     font-size: 1.2em;
@@ -207,7 +207,7 @@ html {
   }
   .proprietes::before {
     content: 'Propriétés ';
-    display: block;
+    /* display: block; */
     color: #383d41;
     font-weight: bold;
     font-size: 1.2em;
