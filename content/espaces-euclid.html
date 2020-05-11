@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.rawgit.com/dreampulse/computer-modern-web-font/master/fonts.css">
+    <link rel="stylesheet" href="../app/style.css">
+    <script>
+        MathJax = {
+          tex: {
+            inlineMath: [['$', '$'], ['\\(', '\\)']],
+            displayMath: [ ['$$','$$'], ["\\[","\\]"] ]
+          }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <title>Espaces euclidiens</title>
+</head>
+<body>
+    
+    $
+    \newcommand{\N}{\mathbb{N}}
+    \newcommand{\Q}{\mathbb{Q}}
+    \newcommand{\R}{\mathbb{R}}
+    \newcommand{\C}{\mathbb{C}}
+    \newcommand{\K}{\mathbb{K}}
+    $
+    
+    <div class="container">
+        <div class="title">Espaces euclidiens</div>
+        <!-- 6:38 -> 7:09-->
+        <h1>Produit scalaire</h1>
+
+        <h2>Définition et exemples</h2>
+
+        <div class="definition">
+        <p>
+        Sit $E$ un $\R$-e.v.
+        </p>
+        <p>
+        Un produit scalaire sur $E$ est une application $\varphi \colon \enspace E^2 \to \R$ qui vérifie :
+        </p>
+        <ol type="i">
+        <li>
+            $\varphi$ est une forme bilinéaire sur $E$.
+        </li>
+        <li>
+            $\varphi$ est symétrique, i.e. $\forall (x,y) \in E^2, \varphi (x,y) = \varphi (y,x)$
+        </li>
+        <li>
+            $\varphi$ est positive, i.e. $\forall x \in E, \varphi(x,x) \ge 0$
+        </li>
+        <li>
+            $\varphi$ est définie, i.e. $\forall x \in E, \varphi (x,x) = 0 \implies x=0_E$
+        </li>
+        </ol>
+        <p>
+        Si $\varphi$ est un produit scalaire sur $E$, $\varphi (x,y)$ se note $\langle x,y \rangle$ ou $\langle x|y \rangle$
+        </p>
+        </div>
+
+        <div class="definition">
+            <span class="block-title">
+                espace préhilbertien - espace euclidien
+            </span>
+        <ol type="i">
+            <li>
+                Un espace préhilbertien réel est un $\R$-e.v. muni d'un produit scalaire.
+            </li>
+            <li>
+                Un espace euclidien est un espace préhilbertien réel de dimension finie.
+            </li>
+        </ol>
+        </div>
+      
+        <div class="exemple">
+            <ol>
+                <li>
+                    Le produit scalaire canonique sur  $\R^n$ :<br>
+                    Pour tout $x=\left( x_1,x_2,\dots,x_n \right)$, $y=\left( y_1,y_2,\dots,y_n \right) \enspace \in \R^n$
+                    $$\langle x|y \rangle = \sum_{i=1}^n x_i y_i$$
+                </li>
+                <li>
+                    On définit sur $\mathscr{F} \left( [a,b], \R \right)$, le produit scalaire $(f,g) \mapsto \int_a^b f(t)g(t)dt$
+                </li>
+                <li>
+                    On définit sur $\mathscr{F}_{2\pi} \left( \R, \R \right)$ l'ensemble des fonction continues et $2\pi$-périodique (de $\R$ vers $\R$) le produit scalaire :
+                    $$\langle f|g \rangle = \frac{1}{2\pi} \int_0^{2\pi} f(t) g(t) dt$$
+                </li>
+                <li>
+                    Soient $n,p \in \N^*$
+                    $$ \begin{align}
+                        \langle \cdot , \cdot \rangle = \mathcal{M}_{n,p}^2 (\R) &\to \R \\
+                        (A,B) & \mapsto \langle A,B \rangle = Tr(^tAB)
+                    \end{align} $$
+                    est un produit scalaire sur $\mathcal{M}_{n,p} (\R)$. <br>
+                    En effet, soient $(A,B,C) \in \mathcal{M}_{n,p}^2(\R)$ et $(\alpha, \beta) \in \R^2$
+                    <ul>
+                        <li>
+                            $$\begin{aligned}[t]
+                                \langle \alpha A + \beta B, C \rangle &= Tr(t_{\alpha A + \beta B} C) \\
+                                                                      &= Tr((\alpha t_A + \beta t_B) C) \\
+                                                                      &= Tr( \alpha t_AC + \beta t_BC ) \\
+                                                                      &= \alpha Tr(t_AC) + \beta Tr(t_BC) \\
+                                                                      &= \alpha \langle A, C \rangle + \beta \langle B, C \rangle
+                            \end{aligned}$$
+                        </li>
+                        <li>
+                            $$\begin{aligned}[t]
+                            \langle A,B \rangle &= Tr(t_A B)\\
+                                                &= Tr(t_{(t_BA)}) \\
+                                                &= Tr(t_BA)\\
+                                                &= \langle B,A \rangle
+                            \end{aligned}$$
+                            <p>
+                                Donc $\langle \cdot , \cdot \rangle$ est symétrique.<br>
+                                $\implies \langle \cdot , \cdot \rangle$ est linéaire par rapport à la $\R^{ème}$ projection d'où $\langle \cdot , \cdot \rangle$ est bilinéaire symétrique.
+                            </p>
+                        </li>
+                        <li>
+                            $\forall A \in \mathcal{M}_{n,p}$ :<br>
+                            $$\begin{aligned}[t]
+                                \langle A,A \rangle &= Tr(t_A A)\\
+                                                    &= \sum_{k=1}^n \left( \sum_{i=1}^n (t_A)_{ki} A_{ik} \right)\\
+                                                    &= \sum_{k=1}^n \sum_{i=1}^n A_{ik}^2
+                            \end{aligned}$$
+                            alors  $\langle A,A \rangle \ge 0$ <br>
+                            or $$\begin{aligned}[t]
+                                \langle A,A \rangle = 0 &\implies \sum_{1 \le i,k \le n} A_{ik}^2 = 0\\
+                                                        &\implies \forall (i,k) \in [\![1,n]\!]^2, \enspace A_{ik} = 0 \\
+                                                        &\implies A=0
+                            \end{aligned}$$
+                            d'où $\langle A,A \rangle$ est défini positive.
+                        </li>
+                    </ul>
+                    <p>
+                        Donc $\langle A,A \rangle$ est un produit scalaire sur $\mathcal{M}_{n,p} (\R)$.
+                    </p>
+                </li>
+            </ol>
+        </div>
+      <br><br><br><br><br><br><br>
+    </div>
+    
+</body>
+</html>

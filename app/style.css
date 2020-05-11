@@ -87,7 +87,7 @@ html {
   }
   .definition::before {
     content: 'Définition ' counter(definition);
-    display: block;
+    /* display: block; */
     color: #004085;
     font-weight: bold;
     font-size: 1.2em;
@@ -245,3 +245,12 @@ html {
       margin-top: 0.25em;
   }
   
+
+  .block-title {
+    font-weight: bold;
+    font-size: 1.2rem;
+    margin-left: 0.5rem;
+}
+
+.block-title:before {content: '(';}
+.block-title:after {content: ')';}
