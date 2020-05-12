@@ -27,9 +27,10 @@
     \newcommand{\K}{\mathbb{K}}
     $
     
-    <div class="container">
+    <div class="page-container">
         <div class="title">Espaces euclidiens</div>
-        <!-- 6:38 -> 7:09-->
+        
+
         <h1>Produit scalaire</h1>
 
         <h2>Définition et exemples</h2>
@@ -176,12 +177,190 @@
         <div class="preuve">
             <ol type="i">
                 <li>
-                    
+                    Soit $(x,y) \in E^2$,<br>
+                    Pour $\lambda$ dans $\R$, posons $P(\lambda) = \langle x+\lambda y,x+\lambda y  \rangle \geqslant 0$<br>
+                    On a $P(\lambda) = \langle x,x \rangle + 2\lambda \langle x,y \rangle + \lambda^2 \langle y,y \rangle \geqslant 0$
+                    <ul>
+                        <li>
+                            Si $\langle y,y \rangle = 0 \iff y = 0_E$<br>
+                            alors $|\langle x,y \rangle|=0 \leqslant ||x|| \cdot ||y|| = 0$
+                        </li>
+                        <li>
+                            Si $\langle y,y \rangle \neq 0 \iff y \neq 0_E$<br>
+                            $P$ est un polynôme de degré $2$ et $\forall \lambda \in \R, \enspace P(\lambda) \geq 0$<br>
+                            donc son discriminant $\Delta \leqslant 0$<br>
+                            or 
+                            $\begin{aligned}[t]
+                                \Delta &= 4\langle x,y \rangle^2 - 4\langle x,x \rangle\langle y,y \rangle \\
+                                       &= 4\left( \langle x,y \rangle^2 - \langle x,x \rangle\langle y,y \rangle \right) \enspace \leqslant 0
+                            \end{aligned}$
+                            donc $\langle x,y \rangle^2 \leqslant \langle x,x \rangle\langle y,y \rangle$<br>
+                            $\implies |\langle x,y \rangle| \leqslant ||x|| \cdot ||y||$
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    $\impliedby /$ $\{x,y\}$ est liée.
+                    <ul>
+                        <li>
+                            Si $x=0_E$ : trivial $0 \leq 0$
+                        </li>
+                        <li>
+                            Si $x \neq 0_E$, alors $\exists \alpha \in \R, y= \alpha x$
+                            $$|\langle x,y \rangle| = |\alpha| \langle x,x \rangle = |\alpha| \cdot ||x||^2$$
+                            $$||x|| \cdot ||y|| = \sqrt{\langle x,x \rangle} \cdot \sqrt{\langle \alpha x,\alpha x \rangle} = |\alpha| \cdot ||x||^2$$
+                            D'où l'égalité.
+                        </li>
+                    </ul>
+                    $\implies /$  $|\langle x,y \rangle| = ||x|| \cdot ||y||$
+                    <ul>
+                        <li>
+                            Si $y=0_E$, alors $\{x,y\}$ est liée.
+                        </li>
+                        <li>
+                            Si $y \neq 0_E$, alors $\Delta = 0$<br>
+                            donc $\exists \lambda_0 \in \R$ tq $P(\lambda_0)=0$<br>
+                            $\implies \langle x+\lambda_0 y, x+\lambda_0 \rangle = 0$<br>
+                            $\implies x+\lambda_0 y = 0$<br>
+                            $\implies x = (-\lambda_0) y$<br>
+                            donc $\{x,y\}$ est liée.
+                        </li>
+                    </ul>
                 </li>
             </ol>
         </div>
 
-      <br><br><br><br><br><br><br>
+        <div class="corollaire definition">
+            <span class="block-title">Norme euclidienne</span>
+            <p>
+                Soit $E$ un espace euclidien.
+            </p>
+            <p>
+                l'application
+                $\begin{aligned}[t]
+                \enspace \| \cdot\| \enspace \colon \enspace E &\to \R^{+} \\
+                &\mapsto \| x\| = \sqrt {\langle x|x \rangle}
+                \end{aligned}$
+                vérifie :
+                <ol type="i">
+                    <li>
+                        $\forall x \in E, \|x\|=0 \iff x=0_E$ (Séparation)
+                    </li>
+                    <li>
+                        $\forall x \in E, \forall \lambda \in \R, \|\lambda x\| = |\lambda| \cdot \|x\|$ (Homogénité)
+                    </li>
+                    <li>
+                        $\forall (x,y) \in E^2, \|x+y\| \leqslant \|x\| + \|y\|$ (L'Inégalité triangulaire ou l'inégalité de Minowsky)
+                    </li>
+                </ol>
+                L'application $\|\cdot\|$ s'appelle la norme euclidienne sur $E$ associée au produit scalaire $\langle \cdot, \cdot \rangle$
+            </p>
+        </div>
+
+        <div class="block">
+            <span class="block-title">Cas d'égalité de Minowsky</span>
+            <p>
+                Pout tout $x,y \in E$, on a :
+                $$ \|x+y\| = \|x\| + \|y\| \iff \{x,y\} \text{ est liée positivement.}$$
+            </p>
+        </div>
+
+        <div class="corollaire">
+            <span class="block-title">La distance euclidienne</span>
+            <p>
+                Soit $(E, \langle \cdot , \cdot \rangle)$ un espace euclidien.<br>
+                L'application 
+                $\begin{aligned}[t]
+                    d \enspace \colon \enspace E^2 &\to \R^{+}\\
+                                             (x,y) &\mapsto \| x-y \| 
+                \end{aligned}$
+                vérifie :
+                <ol type="i">
+                    <li>
+                        $\forall x,y \in E, d(x,y) = 0 \iff x=y$
+                    </li>
+                    <li>
+                        $\forall x,y \in E, d(x,y) = d(y,x)$
+                    </li>
+                    <li>
+                        $\forall x,y,z \in E, d(x,z) \leqslant d(x,y) + d(y,z)$
+                    </li>
+                </ol>
+                $d$ s'appelle la distance euclidienne sur $E$ associée au produit scalaire $\langle \cdot,\cdot \rangle$.
+            </p>
+        </div>
+
+        <div class="proposition">
+            <ol type="i">
+                <li>
+                    $\forall x,y \in E$, on a :
+                    $$ \| x+y \|^2 = \|x\|^2 + 2\langle x,y \rangle + \|y\|^2 $$
+                    $$ \| x-y \|^2 = \|x\|^2 - 2\langle x,y \rangle + \|y\|^2 $$
+                </li>
+                <li>
+                    L'identité du parallélogramme <br>
+                    $\forall x,y \in E$ 
+                    $$\|x+y\|^2 + \|x-y\|^2 = 2 \left( \|x\|^2 + \|y\|^2\right)$$ 
+                </li>
+                <li>
+                    L'identité de polarisation <br>
+                    $\forall x,y \in E$,
+                    $$\begin{align}
+                    \langle x,y \rangle &= \frac 1 2 \left( \|x+y\|^2 - \|x\|^2 - \|y\|^2 \right) \\
+                                        &= \frac 1 2 \left( \|x\|^2 + \|y\|^2 - \|x-y\|^2 \right) \\
+                                        &= \frac 1 4 \left( \|x-y\|^2 - \|x-y\|^2 \right)
+                    \end{align}$$
+                </li>
+            </ol>
+        </div>
+
+
+        <h1>L'orthogonalité</h1>
+        
+        <p>
+            Soient $(E, \langle \cdot , \cdot \rangle)$ un espace préhilbertien réel et $\|\cdot\|$ la norme associée du $\langle \cdot , \cdot \rangle$.
+        </p>
+
+        <div class="definition">
+            <ol type="i">
+                <li>
+                    Un vecteur $x$ de $E$ est dit unitaire si $\|x\|=1$.
+                </li>
+                <li>
+                    Deux vecteurs $x$ et $y$ sont dits orthogonaux si $\langle x,y \rangle = 0$ et on ecrit $x \perp y$.
+                </li>
+                <li>
+                    Un vecteur $x$ est dit orthogonal à un sous ensemble non vide $F$ de $E$ si $\forall y \in F, \langle x, y \rangle = 0$ i.e. $\forall y\in F, x \perp y$.
+                </li>
+                <li>
+                    L'ensemble des vecteurs orthogonaux à un sous ensemble non vide $F$ de $E$ se note $F^\perp$ i.e. $F^\perp = \{ x \in E \enspace|\enspace \forall y \in F, \langle x,y \rangle = 0\}$
+                </li>
+                <li>
+                    Deux parties non vides $X$ et $Y$ de $E$ sont dites orthogonales et on dit écrit $X\perp Y$ si $\forall(x,y)\in X\times Y, \langle x,y \rangle = 0$
+                </li>
+                <li>
+                    Une famille $(x_i)_{i\in I}$ de vecteurs de $E$ ($I$ ensemble non-vide) est dite orthogonale si $\forall (i,j) \in I^2, i \neq j \implies \langle x_i, y_i \rangle = 0.$
+                </li>
+                <li>
+                    Une famille $(x_i)_{i\in I}$ de vecteurs de $E$ ($I$ ensemble non-vide) est dite orthonormée (orthonormale) si :
+                    $$ \forall i \in I, \|x_i\| = 1 $$
+                    $$ \forall (i,j) \in I^2, i \neq j \implies x_i \perp y_i $$
+                </li>
+            </ol>
+        </div>
+
+        <div class="proposition">
+            <p>
+                Soit $(E, \langle \cdot , \cdot \rangle)$ un espace préhilbertien réel.
+                <ol type="a">
+                    <li>
+                        $\{ 0_E \}^\perp = E$ et $E^\perp = \{ 0_E \}$
+                    </li>
+                </ol>
+            </p>
+        </div>
+        
+        <br><br><br><br><br><br><br>
     </div>
     
 </body>

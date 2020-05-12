@@ -4,12 +4,13 @@ html {
   body {
     font-family: "Computer Modern Serif", serif;
     letter-spacing: -0.25px;
-    margin: 3rem 0;
+    /* margin: 3rem 0; */
     counter-reset: section definition proposition theoreme corollaire;
   }
   
-  .container {
+  .page-container {
     max-width: 800px;
+    margin: 0 auto;
   }
   
   .title {
@@ -73,6 +74,22 @@ html {
   ul {
     padding-left: 1.5em;
   }
+
+  .block {
+    background-color: #e2e3e5;
+    border-color: #d6d8db;
+    position: relative;
+    padding: .75rem 1.25rem;
+    padding-bottom: 0.25rem;
+    margin-bottom: 1rem;
+    border: 1px solid transparent;
+    border-radius: .25rem;
+  }
+
+  .block .block-title:after,
+  .block .block-title:before {
+    content: '';
+  }
   
   .definition {
     counter-increment: definition;
@@ -106,7 +123,7 @@ html {
   }
   .proposition::before {
     content: 'Proposition ' counter(proposition);
-    +display: block;
+    /* display: block; */
     color: #383d41;
     font-weight: bold;
     font-size: 1.2em;

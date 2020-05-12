@@ -4,11 +4,77 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cours Math</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="app/app.css">
+    <link rel="stylesheet" href="https://cdn.rawgit.com/dreampulse/computer-modern-web-font/master/fonts.css">
+    <link rel="stylesheet" href="app/style.css">
+
+    <script>
+        MathJax = {
+          tex: {
+            inlineMath: [['$', '$'], ['\\(', '\\)']],
+            displayMath: [ ['$$','$$'], ["\\[","\\]"] ]
+          }
+        };
+    </script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </head>
 <body>
-    <a href="content/espaces-vect.html">Espaces Vectoriels</a><br>
-    <a href="content/matrices.html">Matrices</a><br>
-    <a>Determinant (à écrire)</a><br>
-    <a href="content/espaces-euclid.html">Espaces Euclidiens</a>
+    
+    <div id="sidebar">
+        <div class="logo">
+            Leçons<strong>Math</strong>
+        </div>
+        <nav>
+            <!-- Loaded through JS -->
+        </nav>
+    </div>
+
+    <div id="header">
+        <div class="search">
+            <input type="text" placeholder="Rechercher...">
+            <button>Rechercher</button>
+        </div>
+    </div>
+
+    <div id="content">
+        <div class="wrapper">
+            <p>Veuillez choisir un leçon.</p>
+        </div>
+        <div class="sidebar">
+            <div class="list">
+                <ul>
+                    <li><a href="#">Structure d’un espace vectoriel</a>
+                        <ul>
+                            <li><a href="#">Définition d’un espace vectoriel</a>
+                                <ul>
+                                    <li><a href="#">Définition 1</a></li>
+                                    <li><a href="#">Proposition 1</a></li>
+                                    <li><a href="#">Preuve</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="#">Espaces vectoriels de référence</a></li>
+                            <li><a href="#">Sous-espaces vectoriels</a>
+                                <ul>
+                                    <a href="#">Définition 2</a>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="loader done">
+            <div class="center">
+                <div class="load"></div>
+                <span>Chargement...</span>
+            </div>
+        </div>
+    </div>
+    
+
+    <script src="app/app.js"></script>
 </body>
 </html>
