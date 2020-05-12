@@ -12,6 +12,11 @@ let data = [
         link: 'content/matrices.html'
     },
     {
+        name: 'Determinant',
+        permalink: 'determinant',
+        link: 'content/determinant.html'
+    },
+    {
         name: 'Espaces euclidiens',
         permalink: 'espace-euclid',
         link: 'content/espaces-euclid.html'

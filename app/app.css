@@ -20,7 +20,7 @@ body {
     position: absolute;
     bottom: 0;
     width: 100%;
-    background: #E1F5FE;
+    background: rgba(3, 169, 244, 0.05);
     padding: 1rem;
     text-align: center;
 }
@@ -181,4 +181,18 @@ body {
     height: fit-content;
     position: sticky;
     top: 0;
+}
+
+#content .sidebar .list ul {
+    margin: 0;
+    padding-left: 1rem;
+    list-style: none;
+}
+
+#content .sidebar .list > ul {
+    padding-left: 0;
+}
+
+#content .sidebar .list > ul > li > a {
+    font-weight: bold
 }
